@@ -10,10 +10,9 @@ pipeline {
             steps {
                 sh """
                 export AWS_PROFILE='sandbox' 
-                echo $AWS_PROFILE
                 cd terraform 
                 aws-profile terraform init 
-                aws-profile terraform plan //dry run
+                aws-profile terraform plan 
                 aws-profile terraform apply -auto-approve
                 """ 
             }
