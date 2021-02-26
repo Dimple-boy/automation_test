@@ -9,6 +9,7 @@ pipeline {
         stage ("Terraform") {
             steps {
                 sh "export AWS_PROFILE='sandbox'" //Tell it to use sandbox profile
+                sh "echo $AWS_PROFILE"
                 sh "cd terraform" //navigating to directory within automation_test project
                 sh "aws-profile terraform init" //initiliasing terraform, and using aws-profile to give terraform the rights it needs to access HMRCs AWS.
                 sh "aws-profile terraform plan" //dry run
