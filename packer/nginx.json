@@ -1,0 +1,38 @@
+{
+    "variables": {
+      "region": "eu-west-2"
+    },
+    "builders": [
+      {
+        "name": "ubuntu-18.04",
+        "type": "amazon-ebs",
+        "region": "eu-west-2",
+        "ami_name": "jonnyheywood-{{timestamp}}",
+        "associate_public_ip_address": true,
+        "source_ami_filter": {
+          "filters": {
+            "virtualization-type": "hvm",
+            "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
+            "root-device-type": "ebs"
+          },
+          "owners": [
+            "099720109477"
+          ],
+          "most_recent": true
+        },
+        "instance_type": "t2.micro",
+        "ssh_username": "ubuntu"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "file",
+        "source": "./configs/",
+        "destination": "/tmp/"
+      },
+      {
+        "type": "shell",
+        "script": "./scripts/install.sh"
+      }
+    ]
+  }
