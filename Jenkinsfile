@@ -3,10 +3,10 @@ pipeline {
     stages {
         stage ("Packer Build") {
             steps {
-                sh "export AWS_PROFILE='sandbox'
+                sh """export AWS_PROFILE='sandbox'
                 cd packer
                 aws-profile packer build nginx.json
-                cd ../"
+                cd ../"""
             }
         }
         stage ("Terraform") {
