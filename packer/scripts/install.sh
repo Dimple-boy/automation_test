@@ -1,3 +1,6 @@
+#!/bin/bash
+set -uex
+
 apt update -y
 apt install nginx -y
 ufw allow 'Nginx HTTP'
