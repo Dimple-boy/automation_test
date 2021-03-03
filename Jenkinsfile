@@ -26,10 +26,7 @@ pipeline {
                 export AWS_PROFILE='sandbox' 
                 export AWS_DEFAULT_REGION=eu-west-2
                 IPADDRESS=\$(/var/lib/jenkins/.local/bin/aws ec2 describe-instances --filters "Name=tag:Name,Values=JonnyWeb" | grep PublicIpAddress | awk -F ":" '{print \$2}' | sed 's/[",]//g')
-                ssh ubuntu@\$IPADDRESS 'rm -f /var/www/html/*'
-
-
-
+                runuser -l jenkins -c "sh ubuntu@\$IPADDRESS 'rm -f /var/www/html/*'"
                 """
             }
         }
