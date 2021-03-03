@@ -22,7 +22,13 @@ pipeline {
         }
         stage ("Deploy") {
             steps {
-                sh "echo 'deploy started'"
+                sh """
+                IPADDRESS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=JonnyWeb" | grep PublicIpAddress | awk -F ":" '{print $2}' | sed 's/[",]//g')
+                ssh ubuntu@$IPADDRESS 'rm -f /var/www/html/*'
+
+
+
+                """
             }
         }
     }
