@@ -17,7 +17,7 @@ resource "aws_security_group" "allow_ssh" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-  }
+  } #This block has been added to allow me to access via web.
 
   egress {
     from_port   = 0

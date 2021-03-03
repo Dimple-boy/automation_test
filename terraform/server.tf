@@ -16,4 +16,7 @@ resource "aws_instance" "web" {
   instance_type = "t3.small"
   key_name      = "jonathan.heywood"
   security_groups = [aws_security_group.allow_ssh.name]
+  tags = {
+    Name = "JonnyWeb"
+  }
 }

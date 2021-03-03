@@ -48,6 +48,7 @@
         "remote_path": "/packer/provision.sh",
         "inline": [
           "export DEBIAN_FRONTEND=noninteractive",
+          "echo 'Hello World'",
           "sudo run-parts --exit-on-error /packer/scripts",
           "sudo rm -rf /packer"
         ]
