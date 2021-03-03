@@ -45,7 +45,7 @@
       },
       {
         "type": "shell",
-        "remote_path": "/packer/install.sh",
+        "remote_path": "/packer/provision.sh",
         "inline": [
           "export DEBIAN_FRONTEND=noninteractive",
           "sudo run-parts --exit-on-error /packer/scripts",
