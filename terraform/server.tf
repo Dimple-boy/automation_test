@@ -3,12 +3,12 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["370807233099/jonnyheywood-*"]
+    values = ["jonnyheywood-*"]
   }
 
   #owners = ["099720109477"] # commented out but will probably want the ubuntu owner in reality.
 
-  owners = ["370807233099"]
+  owners = ["self"]
 }
 
 resource "aws_instance" "web" {
