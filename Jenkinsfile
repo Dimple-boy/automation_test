@@ -27,7 +27,8 @@ pipeline {
                 export AWS_DEFAULT_REGION=eu-west-2
                 IPADDRESS=\$(aws-profile /var/lib/jenkins/.local/bin/aws ec2 describe-instances --filters "Name=tag:Name,Values=JonnyWeb" | grep PublicIpAddress | awk -F ":" '{print \$2}' | sed 's/[",]//g' | xargs)
                 ssh -o StrictHostKeyChecking=no ubuntu@\$IPADDRESS 'sudo rm -f /var/www/html/*'
-                scp -o StrictHostKeyChecking=no deploy/index.html ubuntu@\$IPADDRESS:/var/www/html/index.html 
+                scp -o StrictHostKeyChecking=no deploy/index.html ubuntu@\$IPADDRESS:./index.html 
+                ssh -o StrictHostKeyChecking=no ubuntu@\$IPADDRESS 'sudo mv ~/index.html /var/www/html/'
                 """
             }
         }
