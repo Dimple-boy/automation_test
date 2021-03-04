@@ -1,25 +1,25 @@
 pipeline {
     agent any 
     stages {
-        stage ("Packer Build") {
-            steps {
-                sh """export AWS_PROFILE='sandbox'
-                cd packer
-                aws-profile packer build nginx.json
-                cd ../"""
-            }
-        }
-        stage ("Terraform") {
-            steps {
-                sh """
-                export AWS_PROFILE='sandbox' 
-                cd terraform 
-                aws-profile terraform init 
-                aws-profile terraform plan 
-                aws-profile terraform apply -auto-approve
-                """ 
-            }
-        }
+        // stage ("Packer Build") {
+        //     steps {
+        //         sh """export AWS_PROFILE='sandbox'
+        //         cd packer
+        //         aws-profile packer build nginx.json
+        //         cd ../"""
+        //     }
+        // }
+        // stage ("Terraform") {
+        //     steps {
+        //         sh """
+        //         export AWS_PROFILE='sandbox' 
+        //         cd terraform 
+        //         aws-profile terraform init 
+        //         aws-profile terraform plan 
+        //         aws-profile terraform apply -auto-approve
+        //         """ 
+        //     }
+        // }
         stage ("Deploy") {
             steps {
                 sh """
